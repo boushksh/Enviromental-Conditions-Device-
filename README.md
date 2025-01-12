@@ -1,5 +1,6 @@
-# Airmo-Task-
-Test task for Hardware Engineer
+Thank you for the clarification. Here's the updated README file with the description of the `run_sensors.py` file:
+
+---
 
 # Raspberry Pi Sensor Interface: GPS, Temperature, Accelerometer, and Magnetometer
 
@@ -45,7 +46,22 @@ This project demonstrates interfacing **PA1616S GPS**, **MAX31865 PT100 amplifie
    python3 accelerometer_magnetic_field_sensor_setting_code.py
    ```
 
-## Sensor Data
-- **GPS Module**: Latitude, Longitude, Altitude (m), Speed (km/h).
-- **MAX31865 PT100**: Temperature (°C).
-- **LSM303AGR**: Acceleration (g) and Magnetic Field (Gauss).
+## `run_sensors.py` File
+
+The `run_sensors.py` script continuously collects data from the GPS, temperature sensor, accelerometer, and magnetometer, and appends the results to a CSV file.
+
+### Functionality:
+- **Continuous Data Collection**: The script loops through reading data from each sensor every second.
+- **Data Logging**: Sensor readings (latitude, longitude, temperature, acceleration, and magnetic field data) are recorded and appended to a CSV file.
+- **Synchronization**: The collected data is timestamped, ensuring that each set of readings is associated with the correct time.
+- **Efficiency**: Uses threading or asynchronous operations to ensure that the sensors are read continuously without blocking the main program.
+
+
+### Usage:
+- The `run_sensors.py` script continuously logs sensor data into a CSV file every second.
+- The logged data includes:
+  - **Timestamp**: The current date and time of the reading.
+  - **GPS Data**: Latitude, Longitude, Altitude (m), Speed (km/h).
+  - **Temperature Data**: Temperature in Celsius from the MAX31865.
+  - **Acceleration Data**: Acceleration in the X, Y, and Z axes from the LSM303AGR.
+  - **Magnetic Field Data**: Magnetic field strength in the X, Y, and Z axes from the LSM303AGR.
