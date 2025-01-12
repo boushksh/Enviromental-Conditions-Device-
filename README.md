@@ -58,7 +58,7 @@ The `run_sensors.py` script continuously collects data from the GPS, temperature
 
 
 ### Usage:
-- The `run_sensors.py` script continuously logs sensor data into a CSV file every second.
+- The `run_sensors.py` script continuously logs sensor data into a CSV file.
 - The logged data includes:
   - **Timestamp**: The current date and time of the reading.
   - **GPS Data**: Latitude, Longitude, Altitude (m), Speed (km/h).
