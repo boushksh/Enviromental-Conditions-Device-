@@ -2,7 +2,7 @@ import csv
 import time
 from temperature_sensor_setting_code import read_temperature
 from gps_setting_code import read_gps
-from accelerometer_magnetic_field_sensor_setting_code import read_acceleration_and_magnetic_field
+from accelerometer_magnetic_field_sensor_setting_code import read_accelerometer, read_magnetometer
 
 # CSV File Setup
 csv_filename = "sensor_data.csv"
@@ -27,7 +27,8 @@ def run_sensors():
         # Read data from the sensors
         gps_data = read_gps()  # This should return a tuple (latitude, longitude, altitude, speed)
         temperature_data = read_temperature()  # This should return temperature in Celsius
-        accelerometer_data, magnetic_field_data = read_acceleration_and_magnetic_field()  # This should return (x, y, z) for both acceleration and magnetic field
+        accelerometer_data = read_accelerometer()  # This should return (x, y, z) acceleration data
+        magnetometer_data = read_magnetometer()  # This should return (x, y, z) magnetic field data
 
         # Get the current timestamp
         timestamp = time.strftime('%Y-%m-%d %H:%M:%S')
@@ -43,16 +44,6 @@ def run_sensors():
             'Acceleration (X)': accelerometer_data[0],
             'Acceleration (Y)': accelerometer_data[1],
             'Acceleration (Z)': accelerometer_data[2],
-            'Magnetic Field (X)': magnetic_field_data[0],
-            'Magnetic Field (Y)': magnetic_field_data[1],
-            'Magnetic Field (Z)': magnetic_field_data[2]
-        }
-
-        # Append the data to the CSV file
-        append_data_to_csv(data)
-
-        # Wait for the next read (adjust the sleep time based on how frequently you want to collect data)
-        time.sleep(1)
-
-if __name__ == '__main__':
-    run_sensors()
+            'Magnetic Field (X)': magnetometer_data[0],
+            'Magnetic Field (Y)': magnetometer_data[1],
+            'Magnetic Field (Z)': magnetometer_data[2]
