@@ -9,7 +9,7 @@ baud_rate = 9600  # Common baud rate for GPS modules
 # Open serial connection to GPS module
 gps = serial.Serial(gps_port, baud_rate, timeout=1)
 
-def read_gps_data():
+def read_gps():
     while True:
         if gps.in_waiting > 0:
             # Read data from the GPS module
@@ -22,7 +22,7 @@ def read_gps_data():
 def main():
     print("Starting GPS communication...")
     try:
-        read_gps_data()
+        read_gps()
     except KeyboardInterrupt:
         print("\nGPS reading stopped.")
     finally:
